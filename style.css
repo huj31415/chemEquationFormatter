@@ -1,0 +1,16 @@
+textarea {
+  width: calc(100% - 16px - 10px);
+  /* width: 100%; */
+  min-height: 50px;
+  max-height: 300px;
+  overflow: hidden;  /* Hide scrollbar when not needed */
+  padding: 10px;
+  display: block;
+  /* font-size: 16px; */
+  font-family: 'Segoe UI';
+  resize: none; /* Prevent manual resizing */
+}
+
+input {
+  width: 70px;
+}
