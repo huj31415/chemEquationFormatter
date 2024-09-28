@@ -1,3 +1,10 @@
+body {
+  font-family: 'Segoe UI';
+  color-scheme: dark;
+  background-color: black;
+  color: white;
+}
+
 textarea {
   width: calc(100% - 16px - 10px);
   /* width: 100%; */
@@ -6,8 +13,8 @@ textarea {
   overflow: hidden;  /* Hide scrollbar when not needed */
   padding: 10px;
   display: block;
+  font-family: 'Fira Code', 'Consolas', monospace;
   /* font-size: 16px; */
-  font-family: 'Segoe UI';
   resize: none; /* Prevent manual resizing */
 }
 

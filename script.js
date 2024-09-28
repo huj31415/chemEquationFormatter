@@ -1,10 +1,12 @@
-const input = document.getElementById("formula");
-const output = document.getElementById("output");
-const submit = document.getElementById("submit");
-const clear = document.getElementById("clear");
+// todo: equation balance checker, name to formula translation
 
-function formatEq(equation) {
-  const fInput = input.value.split("\n").filter(n => n != "");
+const input = document.getElementById('formula');
+const outputTable = document.getElementById('output');
+const submit = document.getElementById('submit');
+const clear = document.getElementById('clear');
+
+function formatEq() {
+  const fInput = input.value.split('\n').filter(n => n != '');
   fInput.forEach((equation, i) => {
     const subscriptRegex = /([A-Z][a-z]?)(\d+)/g; // Matches elements followed by numbers (e.g., H2, O3)
     const superscriptRegex = /(\^)(-?\d*[+-]?)/g; // Matches superscripts with optional number and sign (e.g., ^2+, ^-2, ^+, ^-)
@@ -20,13 +22,12 @@ function formatEq(equation) {
         return `<sup>${number || ''}</sup>`; // Handle cases where number is empty (for ^+ or ^-)
       })
       // Format subscripts for numbers after parentheses
-      .replace(parenthesisSubscriptRegex, (match, closingParen, number) => {
+      .replace(parenthesisSubscriptRegex, (match, closeP, number) => {
         return `)<sub>${number}</sub>`;
       });
 
-    output.insertRow(0 + i).innerHTML = formattedEquation;
+    outputTable.insertRow(0 + i).innerHTML = formattedEquation;
   });
-  // return formattedEquation;
 }
 
 submit.onclick = () => formatEq();
@@ -41,7 +42,7 @@ input.onkeydown = (event) => {
 };
 
 clear.onclick = () => {
-  output.innerHTML = "";
+  outputTable.innerHTML = '';
 }
 
 // resize textarea
