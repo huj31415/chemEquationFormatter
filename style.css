@@ -13,9 +13,13 @@ textarea {
   overflow: hidden;  /* Hide scrollbar when not needed */
   padding: 10px;
   display: block;
-  font-family: 'Fira Code', 'Consolas', monospace;
+  font-family: 'Consolas', monospace;
   /* font-size: 16px; */
   resize: none; /* Prevent manual resizing */
+}
+
+table {
+  font-family: 'Century Schoolbook';
 }
 
 input {

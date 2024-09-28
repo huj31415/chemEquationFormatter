@@ -6,14 +6,13 @@ const submit = document.getElementById('submit');
 const clear = document.getElementById('clear');
 
 function formatEq() {
-  const fInput = input.value.split('\n').filter(n => n != '');
-  fInput.forEach((equation, i) => {
-    const subscriptRegex = /([A-Z][a-z]?)(\d+)/g; // Matches elements followed by numbers (e.g., H2, O3)
-    const superscriptRegex = /(\^)(-?\d*[+-]?)/g; // Matches superscripts with optional number and sign (e.g., ^2+, ^-2, ^+, ^-)
-    const parenthesisSubscriptRegex = /(\))(\d+)/g; // Matches numbers after parentheses (e.g., (NO3)2)
+  const subscriptRegex = /([A-Z][a-z]?)(\d+)/g; // Matches elements followed by numbers (e.g., H2, O3)
+  const superscriptRegex = /(\^)(-?\d*[+-]?)/g; // Matches superscripts with optional number and sign (e.g., ^2+, ^-2, ^+, ^-)
+  const parenthesisSubscriptRegex = /(\))(\d+)/g; // Matches numbers after parentheses (e.g., (NO3)2)
 
+  input.value.split('\n').filter(n => n != '').forEach((equation, i) => {
     // Format subscripts for elements and polyatomic ions
-    let formattedEquation = equation
+    outputTable.insertRow(0 + i).innerHTML = equation
       .replace(subscriptRegex, (match, element, number) => {
         return `${element}<sub>${number}</sub>`;
       })
@@ -24,9 +23,9 @@ function formatEq() {
       // Format subscripts for numbers after parentheses
       .replace(parenthesisSubscriptRegex, (match, closeP, number) => {
         return `)<sub>${number}</sub>`;
-      });
-
-    outputTable.insertRow(0 + i).innerHTML = formattedEquation;
+      })
+      // replace arrows
+      .replace(/-+>/g, '⟶') + "<br>";
   });
 }
 
